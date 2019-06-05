@@ -1,0 +1,44 @@
+body {
+  margin: 0;
+  font-family: "Open Sans", sans-serif;
+  background-color: #fbbf2d;
+  margin: 2rem;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ========== UTILS ========== */
+
+.h-90-vh {
+  height: 90vh;
+}
+
+.max-h-90-vh {
+  max-height: 90vh;
+}
+
+.h-2\/3 {
+  height: 66.66%;
+}
+
+.h-1\/3 {
+  height: 33.33%;
+}
+
+.h-1\/2 {
+  height: 50%;
+}
+
+/* ========== FONTS ========== */
+
+.font-title {
+  font-weight: 800;
+}
+
+.font-emphasized {
+  font-weight: 700;
+}
+
+.font-initial {
+  font-weight: 400;
+}

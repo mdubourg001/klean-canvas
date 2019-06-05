@@ -1,0 +1,1 @@
+Feature: "Get started" block explaining the concept and the way to use it

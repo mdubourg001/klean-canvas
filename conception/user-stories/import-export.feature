@@ -1,0 +1,1 @@
+Feature: Import and export of Lean Canvas to JSON as v1.0 save feature
