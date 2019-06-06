@@ -4,6 +4,8 @@ import React, {
   useImperativeHandle,
   forwardRef
 } from "react";
+import html2canvas from "html2canvas";
+
 import useDebounce from "../hooks/useDebounce";
 import Box from "./Box";
 import useCanvasLocalStorage from "../hooks/useCanvasLocalStorage";
@@ -62,11 +64,24 @@ const LeanCanvas = forwardRef(({}, ref) => {
       };
 
       download(JSON.stringify(canvas), "lean-canvas.json", "application/json");
+    },
+
+    saveCanvasAsPng() {
+      html2canvas(document.querySelector("#canvas")).then(c => {
+        const a = document.createElement("a");
+        const imageData = c.toDataURL("image/png");
+        a.href = imageData;
+        a.download = "lean-canvas.png";
+        a.click();
+      });
     }
   }));
 
   return (
-    <div className="w-full h-90-vh max-h-90-vh flex flex-col bg-white rounded-lg shadow-lg">
+    <div
+      id="canvas"
+      className="w-full h-90-vh max-h-90-vh flex flex-col bg-white rounded-lg shadow-lg"
+    >
       <div className="h-2/3 flex">
         <div className="w-1/5 flex flex-col">
           <div className="h-2/3">

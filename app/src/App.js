@@ -8,7 +8,7 @@ const App = () => {
   return (
     <>
       <div className="container mx-auto z-10">
-        <div className="flex justify-between items-center pt-3 pb-8">
+        <div className="flex justify-between items-center pt-6 pb-16">
           <h1
             className="text-4xl font-serif"
             style={{ transform: "rotate(-1deg)" }}
@@ -29,16 +29,23 @@ const App = () => {
 
             <button
               disabled
-              className="rounded bg-teal-700 shadow focus:shadow-md px-6 py-2"
+              className="rounded-l bg-teal-700 shadow focus:shadow-md px-3 py-2"
             >
-              <b className="text-white">⬆ &nbsp; Import</b>
+              <b className="text-white">⬆ &nbsp; JSON import</b>
             </button>
 
             <button
               onClick={() => canvasNode.current.saveCanvasAsJsonFile()}
+              className="rounded-r bg-teal-700 shadow focus:shadow-md px-3 py-2"
+            >
+              <b className="text-white">💾 &nbsp; JSON export</b>
+            </button>
+
+            <button
+              onClick={() => canvasNode.current.saveCanvasAsPng()}
               className="rounded bg-teal-700 shadow focus:shadow-md px-6 py-2 ml-3"
             >
-              <b className="text-white">💾 &nbsp; Export</b>
+              <b className="text-white">🖼 &nbsp; PNG export</b>
             </button>
           </div>
         </div>

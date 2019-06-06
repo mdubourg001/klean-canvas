@@ -31,12 +31,6 @@ Feature: Lean Canvas edition and local storage save
     When the User clicks on "Yes" to confirm his choice
     Then all the boxes of the canvas and the localStorage get cleared
 
-  Scenario: User clears his work on the canvas by creating a new canvas
-    Given the User has clicked on the "New canvas" button
-    And the User has been prompted for confirmation
-    When the User clicks on "Yes" to confirm his choice
-    Then all the boxes of the canvas and the localStorage get cleared
-
   # ======================================================================== #
   # ========================== SECONDARY SCENARIOS ========================= #
   # ======================================================================== #
