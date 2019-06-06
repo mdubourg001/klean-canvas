@@ -1,23 +1,30 @@
-import React, { useState, useEffect } from "react";
+import React, {
+  useState,
+  useEffect,
+  useImperativeHandle,
+  forwardRef
+} from "react";
 import useDebounce from "../hooks/useDebounce";
 import Box from "./Box";
 import useCanvasLocalStorage from "../hooks/useCanvasLocalStorage";
 
-const LeanCanvas = () => {
-  const [canvas, setCanvas] = useState({
-    "1": "",
-    "1bis": "",
-    "2": "",
-    "2bis": "",
-    "3": "",
-    "3bis": "",
-    "4": "",
-    "5": "",
-    "6": "",
-    "7": "",
-    "8": "",
-    "9": ""
-  });
+const initialCanvas = {
+  "1": "",
+  "1bis": "",
+  "2": "",
+  "2bis": "",
+  "3": "",
+  "3bis": "",
+  "4": "",
+  "5": "",
+  "6": "",
+  "7": "",
+  "8": "",
+  "9": ""
+};
+
+const LeanCanvas = forwardRef(({}, ref) => {
+  const [canvas, setCanvas] = useState(initialCanvas);
   const debouncedCanvas = useDebounce(canvas, 3000);
   const [save, clear, retrieve] = useCanvasLocalStorage(canvas);
 
@@ -35,6 +42,28 @@ const LeanCanvas = () => {
   useEffect(() => {
     save();
   }, [debouncedCanvas]);
+
+  useImperativeHandle(ref, () => ({
+    clearCanvas() {
+      setCanvas(initialCanvas);
+      save();
+    },
+
+    saveCanvasAsJsonFile() {
+      // stolen from https://stackoverflow.com/questions/34156282/how-do-i-save-json-to-local-text-file
+      const download = (content, fileName, contentType) => {
+        const a = document.createElement("a");
+        const file = new Blob([content], { type: contentType });
+        const url = URL.createObjectURL(file);
+        a.href = url;
+        a.download = fileName;
+        a.click();
+        window.URL.revokeObjectURL(url);
+      };
+
+      download(JSON.stringify(canvas), "lean-canvas.json", "application/json");
+    }
+  }));
 
   return (
     <div className="w-full h-90-vh max-h-90-vh flex flex-col bg-white rounded-lg shadow-lg">
@@ -177,6 +206,6 @@ const LeanCanvas = () => {
       </div>
     </div>
   );
-};
+});
 
 export default LeanCanvas;
