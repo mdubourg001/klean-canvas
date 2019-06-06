@@ -2,7 +2,14 @@ import React, { useState } from "react";
 
 const DEFAULT_TEXTAREA_FONT_SIZE = 13;
 
-const Box = ({ title, subtitle, cssClasses, tabIndex }) => {
+const Box = ({
+  title,
+  subtitle,
+  cssClasses,
+  tabIndex,
+  content, // content retrieved from localStorage from exemple
+  updateModel
+}) => {
   const [focused, setFocused] = useState(false);
   const [textAreaFontSize, setTextAreaFontSize] = useState(
     DEFAULT_TEXTAREA_FONT_SIZE
@@ -58,7 +65,11 @@ const Box = ({ title, subtitle, cssClasses, tabIndex }) => {
         spellCheck="false"
         autoCorrect="false"
         className="w-full h-full focus:outline-none"
-        onInput={onTextareaInput}
+        value={content}
+        onChange={e => {
+          updateModel(e.target.value);
+          onTextareaInput(e);
+        }}
         onFocus={() => setFocused(true)}
         onBlur={() => setFocused(false)}
       />

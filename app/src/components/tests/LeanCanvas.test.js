@@ -5,6 +5,4 @@ import "../../setup-tests";
 
 test("", () => {
   const canvas = shallow(<LeanCanvas />);
-
-  expect(canvas.text()).toEqual("Hello");
 });
