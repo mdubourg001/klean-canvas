@@ -1,10 +1,17 @@
 body {
-  margin: 0;
   font-family: "Nunito", sans-serif;
   background-color: #fbbf2d;
-  margin: 2rem;
+  margin-top: 0;
+  overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+#doc-panel-teal {
+  margin-left: 50%;
+  transform: rotate(10deg) translateX(-50%);
+  width: 150%;
+  z-index: -1;
 }
 
 /* ========== UTILS ========== */
@@ -29,7 +36,30 @@ body {
   height: 50%;
 }
 
+/* ========== BUTTONS ========== */
+
+button {
+  transition: transform 150ms ease, box-shadow 0.2s ease;
+}
+
+button:not(.no-animation):active {
+  transform: scale(0.98, 0.98);
+}
+
+button:focus {
+  outline: none !important;
+}
+
+button:disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
 /* ========== FONTS ========== */
+
+.font-serif {
+  font-family: "Lilita One", serif;
+}
 
 .font-title {
   font-weight: 800;
