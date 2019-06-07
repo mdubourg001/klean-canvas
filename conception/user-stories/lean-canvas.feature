@@ -25,7 +25,7 @@ Feature: Lean Canvas edition and local storage save
     When the User leaves the application
     Then his work is automatically saved into localStorage without waiting 3 seconds
 
-  Scenario: User clears (reset to 0) all his work on the canvas
+  Scenario: User clears (reset to 0) all his work on the canvas ✅
     Given the User has clicked on the "Clear canvas" button
     And the User has been prompted for confirmation
     When the User clicks on "Yes" to confirm his choice

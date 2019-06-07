@@ -1,6 +1,10 @@
+:root {
+  --main-orange: #fbbf2d;
+}
+
 body {
   font-family: "Nunito", sans-serif;
-  background-color: #fbbf2d;
+  background-color: var(--main-orange);
   margin-top: 0;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
@@ -36,6 +40,10 @@ body {
   height: 50%;
 }
 
+.text-main-orange {
+  color: var(--main-orange);
+}
+
 /* ========== BUTTONS ========== */
 
 button {
@@ -58,7 +66,7 @@ button:disabled {
 /* ========== FONTS ========== */
 
 .font-serif {
-  font-family: "Lilita One", serif;
+  font-family: "Pacifico", serif;
 }
 
 .font-title {
