@@ -5,6 +5,8 @@ const Alert = ({
   content,
   okLabel,
   cancelLabel,
+  hideCancel,
+  hideOk,
   triggerClosing,
   onOkClick,
   onCancelClick
@@ -35,21 +37,25 @@ const Alert = ({
         <small className="text-gray-600">{content}</small>
 
         <div className="flex justify-end mt-10">
-          <button
-            onClick={onCancelClick}
-            className="rounded border border-teal-400 bg-gray-200 shadow focus:shadow-md px-6 py-2"
-          >
-            <b className="text-teal-700 text-sm">
-              {cancelLabel ? cancelLabel : "Cancel"}
-            </b>
-          </button>
+          {!hideCancel && (
+            <button
+              onClick={onCancelClick}
+              className="rounded border border-teal-400 bg-gray-200 shadow focus:shadow-md px-6 py-2"
+            >
+              <b className="text-teal-700 text-sm">
+                {cancelLabel ? cancelLabel : "Cancel"}
+              </b>
+            </button>
+          )}
 
-          <button
-            onClick={onOkClick}
-            className="rounded bg-orange-500 shadow focus:shadow-md px-6 py-2 ml-2"
-          >
-            <b className="text-white text-sm">{okLabel ? okLabel : "Yes"}</b>
-          </button>
+          {!hideOk && (
+            <button
+              onClick={onOkClick}
+              className="rounded bg-orange-500 shadow focus:shadow-md px-6 py-2 ml-2"
+            >
+              <b className="text-white text-sm">{okLabel ? okLabel : "Yes"}</b>
+            </button>
+          )}
         </div>
       </div>
     </div>
