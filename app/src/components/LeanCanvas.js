@@ -67,12 +67,40 @@ const LeanCanvas = forwardRef(({}, ref) => {
     },
 
     saveCanvasAsPng() {
+      // canvas with textarea badly supports text wrapping so,
+
+      const insertNextTo = (textarea, p) => {
+        textarea.parentNode.insertBefore(p, textarea.nextSibling);
+      };
+
+      const textareaElements = Array.from(
+        document.getElementsByTagName("textarea")
+      );
+      const pElements = [];
+
+      // for each textarea, we create a p element and we assign it the content
+      // of the textarea. Then we append it to the DOM
+      textareaElements.forEach(textarea => {
+        const p = document.createElement("p");
+        p.appendChild(document.createTextNode(textarea.value));
+        p.style.cssText = window.getComputedStyle(textarea, null).cssText;
+        insertNextTo(textarea, p);
+        pElements.push(p);
+
+        textarea.style.display = "none";
+      });
+
       html2canvas(document.querySelector("#canvas")).then(c => {
         const a = document.createElement("a");
         const imageData = c.toDataURL("image/png");
         a.href = imageData;
         a.download = "lean-canvas.png";
         a.click();
+
+        pElements.forEach(p => p.remove());
+        textareaElements.forEach(
+          textarea => (textarea.style.display = "block")
+        );
       });
     }
   }));

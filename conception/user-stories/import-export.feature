@@ -9,7 +9,7 @@ Feature: Import and export of Lean Canvas to JSON as v1.0 save feature
     When the User clicks the "JSON export" button
     Then a JSON version of his canvas is exported to a file
 
-  Scenario: User export his canvas as PNG image
+  Scenario: User export his canvas as PNG image ✅
     Given the User has filled some boxes of the canvas
     When the User clicks the "PNG export" button
     Then a PNG screenshot of his canvas is exported to a PNG file
