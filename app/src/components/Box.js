@@ -49,9 +49,12 @@ const Box = ({
       }
     >
       <div>
-        <h3 className="text-xs font-title uppercase">
-          <span className="text-main-orange">({tabIndex})</span> {title}
-        </h3>
+        <div className="flex items-center">
+          <div className="rounded-full w-6 h-6 bg-orange-500 text-center shadow">
+            <small className="text-white font-title">{tabIndex}</small>
+          </div>
+          <h3 className="text-xs font-title uppercase ml-2">{title}</h3>
+        </div>
         <h4 className="text-xs text-gray-700 mb-2">{subtitle}</h4>
         <hr className="my-1 border-t border-gray-200" />
       </div>

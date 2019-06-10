@@ -141,7 +141,7 @@ const LeanCanvas = forwardRef(({}, ref) => {
 
       <div
         id="canvas"
-        className="w-full h-90-vh max-h-90-vh flex flex-col bg-white rounded-lg shadow-lg"
+        className="w-full h-90-vh max-h-90-vh flex flex-col bg-white rounded-lg shadow-2xl"
       >
         <div className="h-2/3 flex">
           <div className="w-1/5 flex flex-col">
