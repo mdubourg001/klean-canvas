@@ -1,17 +1,13 @@
-:root {
-  --main-orange: #fbbf2d;
-}
-
 body {
-  font-family: "Nunito", sans-serif;
-  background-color: var(--main-orange);
+  font-family: "Open Sans", sans-serif;
+  background-color: #e6ecf1;
   margin-top: 0;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#doc-panel-teal {
+#doc-panel-twisted {
   margin-left: 50%;
   transform: rotate(10deg) translateX(-50%);
   width: 150%;
@@ -40,10 +36,6 @@ body {
   height: 50%;
 }
 
-.text-main-orange {
-  color: var(--main-orange);
-}
-
 /* ========== BUTTONS ========== */
 
 button {
@@ -66,7 +58,7 @@ button:disabled {
 /* ========== FONTS ========== */
 
 .font-serif {
-  font-family: "Pacifico", serif;
+  font-family: "Lobster", serif;
 }
 
 .font-title {

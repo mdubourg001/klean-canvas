@@ -4,14 +4,14 @@ const DocPanel = () => {
   return (
     <div className="relative py-6">
       <div
-        id="doc-panel-teal"
-        className="absolute bg-teal-700 shadow-lg"
+        id="doc-panel-twisted"
+        className="absolute bg-red-400 shadow-lg"
         style={{ height: "140%" }}
       />
 
-      <div className="container mx-auto py-16">
+      <div className="w-full lg:w-4/5 mx-auto py-16 px-4 lg:px-0">
         <div className="flex justify-between">
-          <div className="w-1/2">
+          <div className="w-full md:w-1/2">
             <h2 className="text-3xl font-serif text-white">
               About Lean Canvas
             </h2>
@@ -35,7 +35,7 @@ const DocPanel = () => {
             </blockquote>
           </div>
 
-          <div className="w-1/3 flex flex-col items-center px-4">
+          <div className="w-full md:w-1/3 flex flex-col items-center px-4">
             <div className="flex flex-col items-center">
               <div className="rounded-full w-6 h-6 bg-orange-500 text-center shadow">
                 <small className="text-white font-title">1</small>

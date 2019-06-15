@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 const Alert = ({
   title,
@@ -11,14 +11,19 @@ const Alert = ({
   onOkClick,
   onCancelClick
 }) => {
+  useEffect(() => {
+    document.body.style.overflowY = "hidden";
+    return () => (document.body.style.overflowY = "scroll");
+  }, []);
+
   return (
     <div
-      className="absolute w-full h-full top-0 left-0 flex justify-center z-10 cursor-pointer"
-      style={{ backgroundColor: "rgba(0, 0, 0, 0.3)" }}
+      className="absolute w-full top-0 left-0 flex justify-center z-10 cursor-pointer"
+      style={{ backgroundColor: "rgba(0, 0, 0, 0.3)", height: "110%" }}
       onClick={triggerClosing}
     >
       <div
-        className="w-5/6 sm:w-1/2 md:w-1/3 py-5 px-8 bg-white rounded-lg"
+        className="w-5/6 sm:w-1/2 md:w-1/3 py-5 px-8 bg-white rounded"
         style={{
           height: "fit-content",
           marginTop: "30vh"
@@ -26,7 +31,7 @@ const Alert = ({
         onClick={e => e.stopPropagation()}
       >
         <div className="flex items-center justify-between">
-          <b className="font-title text-teal-700">
+          <b className="font-title text-red-400">
             {title ? title : "Do you confirm ?"}
           </b>
 
@@ -34,15 +39,15 @@ const Alert = ({
             ✕
           </button>
         </div>
-        <small className="text-gray-600">{content}</small>
+        <small className="text-gray-800">{content}</small>
 
         <div className="flex justify-end mt-10">
           {!hideCancel && (
             <button
               onClick={onCancelClick}
-              className="rounded border border-teal-400 bg-gray-200 shadow focus:shadow-md px-6 py-2"
+              className="rounded border border-gray-300 bg-gray-200 shadow focus:shadow-md px-6 py-1"
             >
-              <b className="text-teal-700 text-sm">
+              <b className="text-gray-800 text-sm">
                 {cancelLabel ? cancelLabel : "Cancel"}
               </b>
             </button>
@@ -51,7 +56,7 @@ const Alert = ({
           {!hideOk && (
             <button
               onClick={onOkClick}
-              className="rounded bg-orange-500 shadow focus:shadow-md px-6 py-2 ml-2"
+              className="rounded bg-red-500 shadow focus:shadow-md px-6 py-1 ml-2"
             >
               <b className="text-white text-sm">{okLabel ? okLabel : "Yes"}</b>
             </button>

@@ -141,7 +141,7 @@ const LeanCanvas = forwardRef(({}, ref) => {
 
       <div
         id="canvas"
-        className="w-full h-90-vh max-h-90-vh flex flex-col bg-white rounded-lg shadow-2xl"
+        className="w-full h-90-vh max-h-90-vh flex flex-col bg-white rounded shadow-2xl"
       >
         <div className="h-2/3 flex">
           <div className="w-1/5 flex flex-col">
@@ -149,7 +149,7 @@ const LeanCanvas = forwardRef(({}, ref) => {
               <Box
                 title="Problem"
                 subtitle="What problems does your idea solves ?"
-                cssClasses="border-t-0 border-l-0 border-b-0 rounded-tl-lg"
+                cssClasses="border-t-0 border-l-0 border-b-0 rounded-tl"
                 tabIndex={1}
                 content={canvas["1"]}
                 updateModel={value => setCanvas({ ...canvas, "1": value })}
@@ -161,6 +161,7 @@ const LeanCanvas = forwardRef(({}, ref) => {
                 title="Existing alternatives"
                 subtitle="How are these problems solved today ?"
                 tabIndex={1}
+                hideTabIndex
                 content={canvas["1bis"]}
                 updateModel={value => setCanvas({ ...canvas, "1bis": value })}
               />
@@ -206,6 +207,7 @@ const LeanCanvas = forwardRef(({}, ref) => {
                 title="High-level concept"
                 subtitle="Your X for Y analogy"
                 tabIndex={3}
+                hideTabIndex
                 content={canvas["3bis"]}
                 updateModel={value => setCanvas({ ...canvas, "3bis": value })}
               />
@@ -237,7 +239,7 @@ const LeanCanvas = forwardRef(({}, ref) => {
           <div className="w-1/5">
             <div className="h-2/3">
               <Box
-                cssClasses="border-t-0 border-r-0 border-b-0 rounded-tr-lg"
+                cssClasses="border-t-0 border-r-0 border-b-0 rounded-tr"
                 title="Customer segments"
                 subtitle="List your target customers and users"
                 tabIndex={2}
@@ -251,6 +253,7 @@ const LeanCanvas = forwardRef(({}, ref) => {
                 title="Early adopters"
                 subtitle="Characteristics of your ideal customer"
                 tabIndex={2}
+                hideTabIndex
                 content={canvas["2bis"]}
                 updateModel={value => setCanvas({ ...canvas, "2bis": value })}
               />
@@ -261,7 +264,7 @@ const LeanCanvas = forwardRef(({}, ref) => {
         <div className="h-1/3 flex">
           <div className="w-1/2">
             <Box
-              cssClasses="border-b-0 border-l-0 rounded-bl-lg"
+              cssClasses="border-b-0 border-l-0 rounded-bl"
               title="Costs"
               subtitle="List your fixed and variable costs"
               tabIndex={7}
@@ -271,7 +274,7 @@ const LeanCanvas = forwardRef(({}, ref) => {
           </div>
           <div className="w-1/2">
             <Box
-              cssClasses="border-b-0 border-r-0 rounded-br-lg"
+              cssClasses="border-b-0 border-r-0 rounded-br"
               title="Revenues"
               subtitle="List your sources of revenue"
               tabIndex={6}

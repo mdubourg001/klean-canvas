@@ -7,6 +7,7 @@ const Box = ({
   subtitle,
   cssClasses,
   tabIndex,
+  hideTabIndex,
   content, // content retrieved from localStorage from exemple
   updateModel
 }) => {
@@ -21,7 +22,8 @@ const Box = ({
   const onTextareaInput = e => {
     e.target.style.height = e.target.scrollHeight + "px";
     const styleHeight = parseInt(e.target.style.height.replace("px", ""));
-    if (e.target.offsetHeight < styleHeight) {
+    if (e.target.value === "") setTextAreaFontSize(DEFAULT_TEXTAREA_FONT_SIZE);
+    else if (e.target.offsetHeight < styleHeight) {
       if (styleHeight - e.target.offsetHeight > diffOuterScrollHeight) {
         setDiffOuterScrollHeight(styleHeight - e.target.offsetHeight);
         setTextAreaFontSize(textAreaFontSize - 1);
@@ -33,11 +35,11 @@ const Box = ({
 
   return (
     <div
-      className={`w-full h-full flex flex-col px-4 py-3 border border-gray-200 ${cssClasses}`}
+      className={`w-full h-full flex flex-col px-5 py-4 border border-gray-200 ${cssClasses}`}
       style={
         focused
           ? {
-              backgroundColor: "#edf2f7",
+              backgroundColor: "#fff5f5",
               borderColor: "transparent",
               boxShadow: "inset 0 2px 4px 0 rgba(0, 0, 0, 0.06)",
               transition: "transform 0.3s ease"
@@ -50,10 +52,18 @@ const Box = ({
     >
       <div>
         <div className="flex items-center">
-          <div className="rounded-full w-6 h-6 bg-orange-500 text-center shadow">
-            <small className="text-white font-title">{tabIndex}</small>
-          </div>
-          <h3 className="text-xs font-title uppercase ml-2">{title}</h3>
+          {!hideTabIndex && (
+            <div className="rounded-full w-6 h-6 bg-red-300 text-center shadow">
+              <small className="text-white font-title">{tabIndex}</small>
+            </div>
+          )}
+          <h3
+            className={`text-xs font-title uppercase ${
+              !hideTabIndex ? "ml-2" : ""
+            }`}
+          >
+            {title}
+          </h3>
         </div>
         <h4 className="text-xs text-gray-700 mb-2">{subtitle}</h4>
         <hr className="my-1 border-t border-gray-200" />
