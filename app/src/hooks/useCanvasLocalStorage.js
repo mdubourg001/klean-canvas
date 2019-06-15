@@ -1,6 +1,7 @@
 import { useCallback } from "react";
 
-const DEFAULT_CANVAS_LS_KEY = "canvas";
+export const DEFAULT_CANVAS_LS_KEY = "canvas";
+export const FIRST_VISIT_KEY = "visitFlag";
 
 const useCanvasLocalStorage = canvas => {
   // `cv` parameter allows to pass undebounced canvas for save

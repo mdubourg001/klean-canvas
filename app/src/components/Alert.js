@@ -23,7 +23,7 @@ const Alert = ({
       onClick={triggerClosing}
     >
       <div
-        className="w-5/6 sm:w-1/2 md:w-1/3 py-5 px-8 bg-white rounded"
+        className="w-5/6 sm:w-1/2 lg:w-2/5 py-5 px-8 bg-white rounded"
         style={{
           height: "fit-content",
           marginTop: "30vh"

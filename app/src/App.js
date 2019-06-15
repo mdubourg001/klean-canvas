@@ -1,19 +1,32 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
+
 import LeanCanvas from "./components/LeanCanvas";
-import DocPanel from "./components/DocPanel";
+import Hints from "./components/Hints";
 import Alert from "./components/Alert";
 import Footer from "./components/Footer";
+import { FIRST_VISIT_KEY } from "./hooks/useCanvasLocalStorage";
 
 const App = () => {
   const canvasNode = useRef();
   const importNode = useRef();
   const [showClearConfirm, setShowClearConfirm] = useState(false);
+  const [hints, setHints] = useState([]);
+
+  useEffect(() => {
+    if (!localStorage.getItem(FIRST_VISIT_KEY)) {
+      setHints([
+        ...hints,
+        "All of your work is automatically stored in your localStorage ! So you can come and go as you please, you will always find the work you left behind 😉"
+      ]);
+      localStorage.setItem(FIRST_VISIT_KEY, true);
+    }
+  }, [setHints]);
 
   return (
     <>
       {showClearConfirm && (
         <Alert
-          content="All your current work will be lost ! Are you sure ?"
+          content="All of your current work will be lost ! Are you sure ?"
           triggerClosing={() => setShowClearConfirm(false)}
           onOkClick={() => {
             canvasNode.current.clearCanvas();
@@ -23,8 +36,12 @@ const App = () => {
         />
       )}
 
+      <div className="hidden sm:block fixed right-0 bottom-0 w-full sm:w-1/2 z-20 lg:w-2/5 p-5">
+        <Hints hints={hints} set={setHints} />
+      </div>
+
       <div className="w-full xl:w-5/6 mx-auto z-10 px-4 pb-20">
-        <div className="flex justify-between items-center pt-6 pb-16">
+        <div className="flex justify-between items-center pt-6 pb-10 sm:pb-14 lg:pb-16">
           <h1 className="flex items-center text-4xl font-serif font-title">
             <span className="text-red-400 mr-2 sm:mr-0">(k)</span>
             <span className="text-gray-800 hidden sm:block">lean-canvas</span>
@@ -38,11 +55,11 @@ const App = () => {
               <b className="text-white text-sm">Clear</b>
             </button>
 
-            <div className="border-l border-gray-800 w-1 mx-3" />
+            <div className="hidden sm:block border-l border-gray-800 w-1 mx-3" />
 
             <button
               onClick={() => importNode.current.click()}
-              className="rounded-l border border-r-0 border-gray-800 shadow focus:shadow-md pl-5 pr-4 py-1"
+              className="hidden sm:block rounded-l border border-r-0 border-gray-800 shadow focus:shadow-md px-4 py-1"
             >
               <input
                 ref={importNode}
@@ -56,14 +73,14 @@ const App = () => {
                   e.target.value = "";
                 }}
               />
-              <b className="text-gray-800 text-sm">{"{}"} &nbsp;JSON import</b>
+              <b className="text-gray-800 text-sm">JSON import</b>
             </button>
 
             <button
               onClick={() => canvasNode.current.saveCanvasAsJsonFile()}
-              className="rounded-r bg-gray-800 shadow focus:shadow-md pl-4 pr-5 py-1"
+              className="hidden sm:block rounded-r bg-gray-800 shadow focus:shadow-md px-4 py-1"
             >
-              <b className="text-white text-sm">{"{}"} &nbsp;JSON export</b>
+              <b className="text-white text-sm">JSON export</b>
             </button>
 
             <button
@@ -75,7 +92,14 @@ const App = () => {
           </div>
         </div>
 
-        <LeanCanvas ref={canvasNode} />
+        <div
+          style={{
+            width: "100%"
+          }}
+          className="overflow-x-scroll sm:overflow-x-auto"
+        >
+          <LeanCanvas ref={canvasNode} />
+        </div>
       </div>
 
       {/* <DocPanel /> */}

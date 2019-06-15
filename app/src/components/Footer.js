@@ -3,8 +3,8 @@ import React from "react";
 const Footer = () => {
   return (
     <div className="w-full bg-red-400">
-      <div className="container mx-auto flex justify-between px-16 py-16">
-        <small className="text-gray-800">
+      <div className="container mx-auto flex flex-col sm:flex-row justify-between items-center px-10 sm:px-16 py-16">
+        <small className="text-gray-800 mb-6 sm:mb-0">
           Proudly designed by{" "}
           <a
             href="https://maximedubourg.com"

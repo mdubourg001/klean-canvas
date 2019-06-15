@@ -141,11 +141,11 @@ const LeanCanvas = forwardRef(({}, ref) => {
 
       <div
         id="canvas"
-        className="w-full h-90-vh max-h-90-vh flex flex-col bg-white rounded shadow-2xl"
+        className="w-full flex flex-col bg-white rounded shadow-2xl"
       >
         <div className="h-2/3 flex">
           <div className="w-1/5 flex flex-col">
-            <div className="h-2/3">
+            <div className="h-1/2 lg:h-2/3">
               <Box
                 title="Problem"
                 subtitle="What problems does your idea solves ?"
@@ -155,7 +155,7 @@ const LeanCanvas = forwardRef(({}, ref) => {
                 updateModel={value => setCanvas({ ...canvas, "1": value })}
               />
             </div>
-            <div className="h-1/3">
+            <div className="h-1/2 lg:h-1/3">
               <Box
                 cssClasses="border-l-0 border-t-0"
                 title="Existing alternatives"
@@ -191,7 +191,7 @@ const LeanCanvas = forwardRef(({}, ref) => {
           </div>
 
           <div className="w-1/5">
-            <div className="h-2/3">
+            <div className="h-1/2 lg:h-2/3">
               <Box
                 cssClasses="border-t-0 border-b-0"
                 title="Unique value proposition"
@@ -201,7 +201,7 @@ const LeanCanvas = forwardRef(({}, ref) => {
                 updateModel={value => setCanvas({ ...canvas, "3": value })}
               />
             </div>
-            <div className="h-1/3">
+            <div className="h-1/2 lg:h-1/3">
               <Box
                 cssClasses="border-t-0"
                 title="High-level concept"
@@ -237,7 +237,7 @@ const LeanCanvas = forwardRef(({}, ref) => {
           </div>
 
           <div className="w-1/5">
-            <div className="h-2/3">
+            <div className="h-1/2 lg:h-2/3">
               <Box
                 cssClasses="border-t-0 border-r-0 border-b-0 rounded-tr"
                 title="Customer segments"
@@ -247,7 +247,7 @@ const LeanCanvas = forwardRef(({}, ref) => {
                 updateModel={value => setCanvas({ ...canvas, "2": value })}
               />
             </div>
-            <div className="h-1/3">
+            <div className="h-1/2 lg:h-1/3">
               <Box
                 cssClasses="border-r-0 border-t-0"
                 title="Early adopters"
