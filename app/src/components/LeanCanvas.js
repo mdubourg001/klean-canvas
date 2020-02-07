@@ -69,6 +69,8 @@ const LeanCanvas = forwardRef(({}, ref) => {
     },
 
     saveCanvasAsPng() {
+      document.querySelector("#canvas").classList.add("canvas--export");
+
       // canvas with textarea badly supports text wrapping so,
 
       const insertNextTo = (textarea, p) => {
@@ -85,7 +87,7 @@ const LeanCanvas = forwardRef(({}, ref) => {
       textareaElements.forEach(textarea => {
         const p = document.createElement("p");
         p.appendChild(document.createTextNode(textarea.value));
-        p.style.cssText = window.getComputedStyle(textarea, null).cssText;
+        p.classList = textarea.classList;
         insertNextTo(textarea, p);
         pElements.push(p);
 
@@ -104,6 +106,8 @@ const LeanCanvas = forwardRef(({}, ref) => {
           textarea => (textarea.style.display = "block")
         );
       });
+
+      document.querySelector("#canvas").classList.remove("canvas--export");
     },
 
     importJSONCanvas(file) {
