@@ -110,7 +110,7 @@ const LeanCanvas = forwardRef(({}, ref) => {
       if (file === undefined) return;
 
       const reader = new FileReader();
-      reader.readAsBinaryString(file);
+      reader.readAsText(file);
       reader.onloadend = () => {
         try {
           const loadedCanvas = JSON.parse(reader.result);
